@@ -1,0 +1,8 @@
+package com.cts.ejb.training.facade;
+
+import com.cts.ejb.training.dto.EmployeeDTO;
+
+public interface EmployeeManager {
+	 void print();
+	
+}

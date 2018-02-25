@@ -1,0 +1,6 @@
+package com.cts.ejb.training.facade;
+
+@ApplicationException(rollback=true)
+public class ShoppingCartException extends Exception {
+    public ShoppingCartException() {}
+}

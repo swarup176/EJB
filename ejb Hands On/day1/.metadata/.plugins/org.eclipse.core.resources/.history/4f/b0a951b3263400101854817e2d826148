@@ -1,0 +1,31 @@
+package com.cts.ejb.training.dto;
+
+import java.io.Serializable;
+
+import com.cts.training.annotation.Required;
+
+public class EmployeeDTO implements Serializable{
+	public String getEmployeeID() {
+		return employeeID;
+	}
+	public void setEmployeeID(String employeeID) {
+		this.employeeID = employeeID;
+	}
+	public String getEmployeeName() {
+		return employeeName;
+	}
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+	public String getEmployeePassword() {
+		return employeePassword;
+	}
+	public void setEmployeePassword(String employeePassword) {
+		this.employeePassword = employeePassword;
+	}
+	@Required(label = "Employee ID")
+	private String employeeID;
+	private String employeeName;
+	@Required(label = "Password")
+	private String employeePassword;
+}

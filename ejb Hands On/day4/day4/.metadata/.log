@@ -1,0 +1,49 @@
+!SESSION 2011-03-24 19:44:23.525 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_16
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -plugincustomization C:\Apps\IDE\Eclipse3.5\eclipse\plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product -data D:\ejb training\day4\day4 -product org.eclipse.epp.package.jee.product -plugincustomization C:\Apps\IDE\Eclipse3.5\eclipse\plugin_customization.ini
+
+!ENTRY com.cenqua.clover.testoptimization 1 0 2011-03-24 19:44:34.306
+!MESSAGE Test Optimization plugin constructed
+
+!ENTRY com.cenqua.clover.testoptimization 1 0 2011-03-24 19:44:34.306
+!MESSAGE Test Optimization plugin started
+
+!ENTRY org.maven.ide.eclipse 4 0 2011-03-24 19:44:37.009
+!MESSAGE Unable to update index for central|http://repo1.maven.org/maven2
+!STACK 0
+java.io.IOException: Transfer for nexus-maven-repository-index.properties failed; Transfer error: Connection refused: no further information
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater$WagonFetcher.retrieve(DefaultIndexUpdater.java:693)
+	at org.sonatype.nexus.index.updater.AbstractResourceFetcher.retrieve(AbstractResourceFetcher.java:22)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.downloadIndexProperties(DefaultIndexUpdater.java:493)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.access$100(DefaultIndexUpdater.java:74)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater$IndexAdaptor.setProperties(DefaultIndexUpdater.java:780)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:954)
+	at org.sonatype.nexus.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:138)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1060)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager.updateIndex(NexusIndexManager.java:1013)
+	at org.maven.ide.eclipse.internal.index.NexusIndexManager$1.run(NexusIndexManager.java:624)
+	at org.maven.ide.eclipse.internal.index.IndexUpdaterJob.run(IndexUpdaterJob.java:71)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.cenqua.clover.testoptimization 1 0 2011-03-24 21:16:48.306
+!MESSAGE Test Optimization plugin stopped
+!SESSION 2011-04-06 11:02:49.285 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_16
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -plugincustomization C:\Apps\IDE\Eclipse3.5\eclipse\plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product -plugincustomization C:\Apps\IDE\Eclipse3.5\eclipse\plugin_customization.ini
+
+!ENTRY com.cenqua.clover.testoptimization 1 0 2011-04-06 11:03:08.645
+!MESSAGE Test Optimization plugin constructed
+
+!ENTRY com.cenqua.clover.testoptimization 1 0 2011-04-06 11:03:08.660
+!MESSAGE Test Optimization plugin started
+
+!ENTRY com.cenqua.clover.testoptimization 1 0 2011-04-06 11:03:25.848
+!MESSAGE Test Optimization plugin stopped

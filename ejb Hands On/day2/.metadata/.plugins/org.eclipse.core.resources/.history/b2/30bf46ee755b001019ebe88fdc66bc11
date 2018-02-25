@@ -1,0 +1,49 @@
+package com.cts.ejb.training.facade;
+
+import java.util.ArrayList;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.SessionSynchronization;
+import javax.ejb.Stateful;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
+@Stateful
+public class ShoppingCartBean implements SessionSynchronization {
+@PersistenceContext(unitName="ShoppingService")  
+private EntityManager em;
+private Shopping sc;
+private List<String> items;
+@PostConstruct
+public void initialize() {
+    items = new ArrayList<String>();
+}
+public void addItem(String item) {
+    items.add(item);
+}
+public void afterBegin() {
+    System.out.println("afterbegin method invoked");        
+}
+public void beforeCompletion() {
+
+    System.out.println("beforeCompletion method invoked");
+    int itemId = 0;
+    for (String item : items) {
+        itemId++;
+        sc = new Shopping();
+        sc.setId(itemId);
+        sc.setItem(item);
+        em.persist(sc);
+    }
+}
+public void afterCompletion(boolean committed) {
+    System.out.println("afterCompletion method invoked");
+    if (committed == false) {
+        System.out.println("committed = false");
+        items = null;
+    }
+}
+}
+

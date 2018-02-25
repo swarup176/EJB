@@ -1,0 +1,31 @@
+package com.cts.ejb.training.facade;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import com.cts.ejb.training.entiry.StudentEntity;
+
+/**
+ * Session Bean implementation class EmployeeDao
+ */
+@Stateless(mappedName = "EmployeeDao", name = "EmployeeDao")
+@LocalBean
+
+public class StudentDao {
+
+	@PersistenceContext(unitName = "jdpUnit")
+	private EntityManager entityManager;
+    
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public void  insert(){
+		StudentEntity test= new  StudentEntity();
+		test.setName("Swarup Das");
+		entityManager.persist(test);
+		
+	}
+}

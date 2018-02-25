@@ -1,0 +1,8 @@
+package com.cts.ejb.training.facade;
+
+import java.util.List;
+
+public class Shopping {
+ private int Id;
+ private List<String>items;
+}

@@ -1,0 +1,13 @@
+package com.cts.ejb.training.facade;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+@Stateless(name="ProjectManager",mappedName="ProjectManager")
+@LocalBean
+
+public class ProjectManagerImpl {
+	public  void test(){
+		System.out.println("in side test");
+	}
+}

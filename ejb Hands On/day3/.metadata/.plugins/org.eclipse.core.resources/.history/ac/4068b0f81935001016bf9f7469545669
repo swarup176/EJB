@@ -1,0 +1,27 @@
+package com.cts.ejb.training.facade;
+
+import java.util.List;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import cts.academy.trng.integration.dao.data.Employee;
+
+/**
+ * Session Bean implementation class EmployeeDao
+ */
+@Stateless(mappedName = "EmployeeDao", name = "EmployeeDao")
+@LocalBean
+
+public class StudentDao {
+
+	@PersistenceContext(unitName = "jdpUnit")
+	private EntityManager entityManager;
+    
+	
+	
+}

@@ -1,0 +1,8 @@
+package com.cts.ejb.training.entiry;
+
+public class Snippet {
+	public static void main(String[] args) {
+		com.cts.ejb.training.facade
+	}
+}
+

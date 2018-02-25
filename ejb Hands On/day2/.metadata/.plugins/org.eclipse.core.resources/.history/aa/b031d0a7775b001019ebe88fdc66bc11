@@ -1,0 +1,20 @@
+package com.cts.ejb.training.facade;
+
+
+public class Shopping {
+ private int Id;
+ private String item;
+public int getId() {
+	return Id;
+}
+public void setId(int id) {
+	Id = id;
+}
+public String getItems() {
+	return items;
+}
+public void setItems(String items) {
+	this.items = items;
+}
+
+}

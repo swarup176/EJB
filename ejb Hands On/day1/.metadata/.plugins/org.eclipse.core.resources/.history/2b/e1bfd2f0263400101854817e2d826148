@@ -1,0 +1,8 @@
+package com.cts.ejb.training.repository;
+
+import com.cts.ejb.training.dto.EmployeeDTO;
+
+
+public interface EmployeeRepository {
+	  boolean getAuthorization(EmployeeDTO employeeDTO); 
+}

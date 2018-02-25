@@ -1,0 +1,15 @@
+package com.cts.ejb.training.facade;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Local;
+import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
+
+@Stateless(name="ProjectManager",mappedName="ProjectManager")
+@Local(ProjectManager.class)
+
+public class ProjectManagerImpl implements ProjectManager{
+	public  void test()
+}

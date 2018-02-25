@@ -1,0 +1,59 @@
+package com.cts.ejb.training.facade;
+
+import javax.annotation.Resource;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
+import javax.ejb.MessageDriven;
+import javax.ejb.MessageDrivenContext;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import com.cts.ejb.training.entiry.StudentEntity;
+
+
+
+/**
+ * Message-Driven Bean implementation class for: TestMDB
+ *
+ */
+@MessageDriven(
+		activationConfig = { @ActivationConfigProperty(
+				propertyName = "destinationType", propertyValue = "javax.jms.Queue"
+		) },mappedName = "queueJNDI")
+public class TestMDB implements MessageListener {
+	
+	
+	@Resource
+	private MessageDrivenContext mdc;
+	@EJB
+	StudentDao studentDao;	
+	
+	/**
+     * @see MessageListener#onMessage(Message)
+     */
+    public void onMessage(Message message) {
+    	TextMessage objectMessage = (TextMessage) message;
+		try {
+			System.out.println("Received : "
+					+ objectMessage.getClass().getName());
+			System.out.println("Received : "
+					+ objectMessage.getJMSCorrelationID());
+			if ("swarup".equals(objectMessage
+					.getJMSCorrelationID())) {
+				System.out.println("message received "+objectMessage.getStringProperty("name"));
+				studentDao.insert();
+			}
+		} catch (JMSException e) {
+			e.printStackTrace();
+			mdc.setRollbackOnly();
+		}
+        
+    }
+
+}

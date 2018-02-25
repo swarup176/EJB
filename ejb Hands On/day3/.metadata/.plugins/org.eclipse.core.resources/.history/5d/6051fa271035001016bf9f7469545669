@@ -1,0 +1,23 @@
+package com.cts.ejb.training.facade;
+
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+
+@Stateless(name="ProjectManager",mappedName="ProjectManager")
+@LocalBean
+
+public class ProjectManagerImpl {
+	@EJB
+	TimerSessionBean timerSessionBean;
+	@Resource
+	SessionContext sessionContext;
+	public  void test(){
+		System.out.println("in side test method");
+		System.out.println(sessionContext.getClass().getName());
+		
+		timerSessionBean.setTimer(30);
+	}
+}

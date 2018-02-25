@@ -1,0 +1,58 @@
+package com.cts.ejb.training.repository;
+import java.sql.ResultSet;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import com.cts.ejb.training.dto.EmployeeDTO;
+import com.cts.ejb.training.entity.Employee;
+
+/**
+ * Session Bean implementation class EmployeeRepositoryImpl
+ */
+@Stateless(name="EmployeeRepository", mappedName = "EmployeeRepository")
+@Remote(EmployeeRepository.class)
+public class EmployeeRepositoryImpl implements EmployeeRepository {
+
+    /**
+     * Default constructor. 
+     */
+    public EmployeeRepositoryImpl() {
+        // TODO Auto-generated constructor stub
+    }
+    
+    @PersistenceContext(unitName= "jdpUnit")
+	public EntityManagerFactory emf;
+
+	public  boolean getAuthorization(EmployeeDTO employeeDTO) {
+		EntityManager entityManager = emf.createEntityManager();
+		Employee emp = new Employee();
+		if ((employeeDTO != null) && (employeeDTO.getEmployeeID() != null)
+				&& (employeeDTO.getEmployeePassword() != null)) {
+			emp.setUserID(employeeDTO.getEmployeeID());
+			emp.setPassword(employeeDTO.getEmployeePassword());
+			Query query = entityManager.createNativeQuery("SELECT * FROM Employee Where userid= ?1 and password= ?2").setParameter(1, emp.getUserID()).setParameter(2,
+							emp.getPassword());
+			List<ResultSet> lst = query.getResultList();
+			Iterator<ResultSet> it = lst.iterator();
+			System.out.println(lst);
+			if (it.hasNext()) {
+				return true;
+			} else {
+				return false;
+			}
+
+		} else {
+			return false;
+		}
+
+	}
+
+
+}

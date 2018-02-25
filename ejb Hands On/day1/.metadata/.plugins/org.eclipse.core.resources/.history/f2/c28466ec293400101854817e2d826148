@@ -1,0 +1,10 @@
+package com.cts.training.annotation;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Range {
+	int min();
+	int max();
+}

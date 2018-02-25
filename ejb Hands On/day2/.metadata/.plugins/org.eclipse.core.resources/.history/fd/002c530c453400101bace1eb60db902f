@@ -1,0 +1,5 @@
+package com.cts.ejb.training.entity;
+
+public class EntityListenertest {
+
+}

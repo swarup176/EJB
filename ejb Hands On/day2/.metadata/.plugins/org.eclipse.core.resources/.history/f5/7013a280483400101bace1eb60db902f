@@ -1,0 +1,78 @@
+package com.cts.ejb.training.servlet;
+
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.cts.ejb.training.facade.EmployeeManager;
+
+/**
+ * Servlet implementation class UserAuthentication
+ */
+@WebServlet("/UserAuthentication")
+public class UserAuthentication extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+
+	/**
+	 * Default constructor.
+	 */
+	public UserAuthentication() {
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		  
+		  try {
+			EmployeeManager employeeManager =  getEmployeeManager(request);
+			employeeManager.print();
+			RequestDispatcher  dispatcher =  request.getRequestDispatcher("/jsp/login.jsp"); 
+					
+				  
+				  dispatcher.forward(request, response);
+			 
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+
+	private EmployeeManager getEmployeeManager(HttpServletRequest request)
+			throws NamingException {
+		Properties properties = new Properties();
+		properties.put(Context.PROVIDER_URL, "iiop://localhost:4848");
+		Context context = new InitialContext(properties);
+		EmployeeManager employeeManager = (EmployeeManager) request
+				.getSession().getAttribute("employeeManager");
+		if (employeeManager == null) {
+			employeeManager = (EmployeeManager) context
+					.lookup("java:global/ResourceManagement/ResourceManagementEJB/employeeManager");
+		}
+		request.getSession().setAttribute("employeeManager", employeeManager);
+		return employeeManager;
+	}
+}

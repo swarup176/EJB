@@ -1,0 +1,7 @@
+package com.cts.ejb.training.facade;
+
+import java.util.List;
+
+public interface ProjectManager {
+	List<String> getProjectDetails(String userID);
+}

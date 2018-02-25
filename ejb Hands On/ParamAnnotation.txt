@@ -1,0 +1,27 @@
+public class TheClass {
+  public static void doSomethingElse(
+        @MyAnnotation(name="aName", value="aValue") String parameter){
+  }
+}
+
+
+-------------------
+
+Method method = ... //obtain method object
+Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+Class[] parameterTypes = method.getParameterTypes();
+
+int i=0;
+for(Annotation[] annotations : parameterAnnotations){
+  Class parameterType = parameterTypes[i++];
+
+  for(Annotation annotation : annotations){
+    if(annotation instanceof MyAnnotation){
+        MyAnnotation myAnnotation = (MyAnnotation) annotation;
+        System.out.println("param: " + parameterType.getName());
+        System.out.println("name : " + myAnnotation.name());
+        System.out.println("value: " + myAnnotation.value());
+    }
+  }
+}
+

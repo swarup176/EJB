@@ -1,0 +1,48 @@
+package com.cts.ejb.training.facade;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.ejb.LocalBean;
+import javax.ejb.SessionSynchronization;
+import javax.ejb.Stateful;
+
+
+@Stateful(name="shoppingCartBean",mappedName="shoppingCartBean")
+@LocalBean
+public class ShoppingCartBean implements SessionSynchronization {
+
+	 private Shopping sc;
+	    private List<String> items;
+	    @PostConstruct
+	    public void initialize() {
+	    	 System.out.println("shopping cart");      
+	        items = new ArrayList<String>();
+	    }
+	    public void addItem(String item) {
+	        items.add(item);
+	    }
+	    public void afterBegin() {
+	        System.out.println("afterbegin method invoked");        
+	    }
+	    public void beforeCompletion() {
+
+	        System.out.println("beforeCompletion method invoked");
+	        int itemId = 0;
+	        for (String item : items) {
+	            itemId++;
+	            sc = new Shopping();
+	            sc.setId(itemId);
+	            sc.setItem(item);
+	           
+	        }
+	    }
+	    public void afterCompletion(boolean committed) {
+	        System.out.println("afterCompletion method invoked");
+	        if (committed == false) {
+	            System.out.println("committed = false");
+	            items = null;
+	        }
+	    }
+	}

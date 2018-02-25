@@ -1,0 +1,31 @@
+package com.cts.ejb.training.facade;
+
+import javax.annotation.Resource;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.jms.ConnectionFactory;
+import javax.jms.Queue;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Stateless(name="ProjectManager",mappedName="ProjectManager")
+@LocalBean
+
+public class ProjectManagerImpl {
+
+	@PersistenceContext(unitName = "jdpUnit")
+	private EntityManager entityManager;
+
+	@Resource(mappedName = "queueConFactory")
+	ConnectionFactory connectionFactory;
+
+	@Resource(mappedName = "queueJNDI")
+	Queue queue;
+
+	public void test() {
+		String name = "com";
+		String value = "20";
+
+		System.out.println("in side test");
+	}
+}

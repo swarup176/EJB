@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+	<persistence-unit name="TestJPA" transaction-type="RESOURCE_LOCAL">
+	<description>Open JPA library</description>
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<non-jta-data-source>sampleDS</non-jta-data-source>
+			<class>com.cts.jpa.entity.Student</class>
+			<class>com.cts.jpa.entity.Employee</class>
+			<class>com.cts.jpa.entity.Passport</class>
+			<class>com.cts.jpa.entity.Parent</class>
+			<class>com.cts.jpa.entity.Child</class>
+			<class>com.cts.jpa.entity.Part</class>
+			<class>com.cts.jpa.entity.Supplier</class>
+			<class>com.cts.jpa.entity.AbstractProduct</class>
+            <class>com.cts.jpa.entity.Product</class>
+            <class>com.cts.jpa.entity.Book</class>
+            <class>com.cts.jpa.entity.TravelGuide</class>
+            <class>com.cts.jpa.entity.Version</class>
+            <class>com.cts.jpa.entity.Event</class>
+            <class>com.cts.jpa.entity.Participant</class>
+            <class>com.cts.jpa.entity.EventParticipant</class>
+		<properties>
+			<property name="openjpa.ConnectionURL" value="jdbc:oracle:thin:@10.236.66.108:1521:CREDIT" />
+			<property name="openjpa.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="openjpa.ConnectionUserName" value="academy_jdp" />
+			<property name="openjpa.ConnectionPassword" value="google1979" />
+			<property name="openjpa.jdbc.UpdateManager" value="operation-order" />
+			<property name="openjpa.FlushBeforeQueries" value="false" />
+			<property name="openjpa.Log" value="SQL=TRACE" />
+		</properties>
+	</persistence-unit>
+</persistence>
+
+

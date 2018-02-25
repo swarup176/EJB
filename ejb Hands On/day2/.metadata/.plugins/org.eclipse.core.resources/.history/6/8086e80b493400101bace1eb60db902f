@@ -1,0 +1,28 @@
+package com.cts.ejb.training.facade;
+
+import javax.ejb.Remote;
+import javax.ejb.Stateful;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.interceptor.Interceptors;
+
+@Stateful(name = "employeeManager", mappedName = "employeeManager")
+@Interceptors(TestInterceptor.class)
+@Remote(EmployeeManager.class)
+@TransactionManagement(TransactionManagementType.CONTAINER)
+public class EmployeeManagerImpl implements EmployeeManager {
+	private int i=0;
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void print() {
+		
+	  System.out.println("the value is"+i++ );
+	  
+		
+		
+	}
+
+	
+}

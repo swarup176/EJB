@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="true" key="J2EE_EXPORT_OVERWRITE"/>
+	<item value="true" key="J2EE_EXPORT_SOURCE"/>
+	<list key="J2EE_IMPORT_EAR">
+		<item value="C:\Documents and Settings\204049\Desktop\Day3EAR.ear"/>
+		<item value="C:\Documents and Settings\204049\Desktop\Day1EAR.ear"/>
+	</list>
+	<list key="J2EE_EXPORT_JST_EAR">
+		<item value="C:\Documents and Settings\204049\Desktop\Day3EAR.ear"/>
+	</list>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="NULL_RUNTIME"/>
+	</list>
+</section>

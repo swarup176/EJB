@@ -1,0 +1,51 @@
+package com.cts.ejb.training.facade;
+
+import javax.annotation.Resource;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
+import javax.ejb.MessageDrivenContext;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
+import javax.jms.TextMessage;
+
+
+
+/**
+ * Message-Driven Bean implementation class for: TestMDB
+ *
+ */
+@MessageDriven(
+		activationConfig = { @ActivationConfigProperty(
+				propertyName = "destinationType", propertyValue = "javax.jms.Queue"
+		) },mappedName = "queueJNDI")
+public class TestMDB implements MessageListener {
+	
+	
+	@Resource
+	private MessageDrivenContext mdc;
+   
+	
+	/**
+     * @see MessageListener#onMessage(Message)
+     */
+    public void onMessage(Message message) {
+    	TextMessage objectMessage = (ObjectMessage) message;
+		try {
+			System.out.println("Received : "
+					+ objectMessage.getObject().getClass().getName());
+			System.out.println("Received : "
+					+ objectMessage.getJMSCorrelationID());
+			if ("swarup".equals(objectMessage
+					.getJMSCorrelationID())) {
+				objectMessage.getStringProperty("name");
+			}
+		} catch (JMSException e) {
+			e.printStackTrace();
+			mdc.setRollbackOnly();
+		}
+        
+    }
+
+}

@@ -1,0 +1,23 @@
+package com.cts.ejb.training.facade;
+
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
+import com.cts.ejb.training.dto.EmployeeDTO;
+
+@Stateless(name = "employeeManager", mappedName = "employeeManager")
+@Remote(EmployeeManager.class)
+public class EmployeeManagerImpl implements EmployeeManager {
+	
+	
+	public boolean isAuthorized(EmployeeDTO employeeDTO) {
+		// check validation
+	  boolean flag=false;
+	  
+		
+		
+		return flag;
+	}
+
+	
+}

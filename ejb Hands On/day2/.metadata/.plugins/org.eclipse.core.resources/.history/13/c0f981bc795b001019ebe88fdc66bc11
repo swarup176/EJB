@@ -1,0 +1,36 @@
+package com.cts.ejb.training.facade;
+
+import javax.annotation.Resource;
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateful;
+import javax.ejb.StatefulTimeout;
+
+@Stateful(name = "ProjectManager", mappedName = "ProjectManager")
+@LocalBean
+@StatefulTimeout(value = 1000)
+public class ProjectManagerImpl {
+	 @EJB
+	 private ShoppingCartBean shoppingCart;
+
+	public void doShopping() throws ShoppingCartException {
+		shoppingCart.addItem("Bread");
+		shoppingCart.addItem("Milk");
+		shoppingCart.addItem("Tea");
+
+		throw new ShoppingCartException();
+	}
+
+	@EJB
+	TimerSessionBean timerSessionBean;
+	@Resource
+	SessionContext sessionContext;
+
+	public void test()throws ShoppingCartException {
+		System.out.println("in side test method");
+		System.out.println(sessionContext.getClass().getName());
+		doShopping();    
+		//timerSessionBean.setTimer(30);
+	}
+}

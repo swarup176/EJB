@@ -1,0 +1,20 @@
+package com.cts.ejb.training.facade;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.InvocationContext;
+
+public class TestInterceptor {
+	@PostConstruct
+	void test(InvocationContext invocationContext) {
+		System.out.println("Hi i am Post Construct");
+	}
+	@PreDestroy
+	void test1(InvocationContext invocationContext) {
+		System.out.println("Hi i am Pre Destroy");
+	}
+	@AroundInvoke
+	private Object profile(InvocationContext invocationContext)
+	
+}

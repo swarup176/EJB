@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/LookUpServlet" docBase="LookUpServlet"
+        debug="5" reloadable="true" crossContext="true"> 
+<Resource name="jdbc/crms_datasource" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver"
+              url="jdbc:oracle:thin:@10.236.66.108:1521:CREDIT"
+              username="sandip_junit" password="sandip_junit" maxActive="20" maxIdle="10"
+              maxWait="-1"/>
+</Context>
